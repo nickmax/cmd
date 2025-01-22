@@ -64,7 +64,7 @@
                             <a class="nav-link click-scroll" href="index.html#section_6">Contact</a>
                         </li>
                         <li class="nav-item ms-3">
-                            <a class="nav-link custom-btn custom-border-btn btn" href="enroll.html" target="_blank">ENROLL NOW</a>
+                            <a class="nav-link custom-btn custom-border-btn btn" href="enroll.html" target="_blank">REGISTER TODAY</a>
                         </li>
                     </ul>
                 </div>
@@ -152,49 +152,50 @@
 
                 <!-- Add your custom CSS for the styling -->
                 <style>
-                    .nav-pills .nav-link {
-                        border-radius: 20;
-                        padding: 15px;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        {
-                            # border: 1px solid #ff3347;
-                            #;
-                        }
-                        margin: 30px;
+                            .nav-pills .nav-link {
+                                border-radius: 20px;
+                                padding: 15px;
+                                text-transform: uppercase;
+                                font-weight: bold;
+                                margin: 30px;
+                            }
 
-                    }
+                            .nav-pills .nav-link.active {
+                                color: #fff;
+                                border-color: #ff3347;
+                            }
 
-                    .nav-pills .nav-link.active {
-                        color: #fff;
+                            .nav-pills .nav-link:hover {
+                                color: #fff;
+                                background-color: rgba(255, 51, 71, 0.86);
+                            }
 
-                        border-color: #ff3347;
-                    }
+                            /* Tabs Content Style */
+                            .tab-content {
+                                margin-top: 30px;
+                            }
 
-                    .nav-pills .nav-link:hover {
-                        color: #fff;
-                        background-color: rgba(255, 51, 71, 0.86);
-                    }
+                            .tab-pane img {
+                                width: 60%;
+                                /* Default for larger screens */
+                                max-width: 80%;
+                                border-radius: 10px;
+                                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                            }
 
-                    /* Tabs Content Style */
-                    .tab-content {
-                        margin-top: 30px;
-                    }
+                            /* Styling for the section background */
+                            .section-bg {
+                                padding: 60px;
+                            }
 
-                    .tab-pane img {
-                        width: 50%;
-                        max-width: 80%;
-                        
-                        border-radius: 10px;
-                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    }
-
-                    /* Styling for the section background */
-                    .section-bg {
-
-                        padding: 60px 60px;
-                </style>
-
+                            /* Media query for smaller screens */
+                            @media (max-width: 768px) {
+                                .tab-pane img {
+                                    width: 100%;
+                                    /* Adjust image width for smaller screens */
+                                }
+                            }
+                        </style>
             </main>
 
             <script src="js/jquery.min.js"></script>
