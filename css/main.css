@@ -45,9 +45,9 @@
   --primary-color:                #ff3347;
   --secondary-color:              #007639;
   --section-bg-color:             #ffffff;
-  --site-footer-bg-color:         #000000;
-  --custom-btn-bg-color:          #ffcc02;
-  --custom-btn-bg-hover-color:    #ffcc02;
+  --site-footer-bg-color:         #00000000;
+  --custom-btn-bg-color:          #007639;
+  --custom-btn-bg-hover-color:    #007639;
   --dark-color:                   #231f20;
   --p-color:                      #717275;
   --border-color:                 #ffffff;
@@ -1281,7 +1281,7 @@ blockquote::before {
 }
 
 .site-footer-bottom {
-  background-color: #000000;
+  background-color: #ffffff00;
   position: relative;
   z-index: 2;
   margin-top: 70px;
@@ -1290,11 +1290,11 @@ blockquote::before {
 }
 
 .site-footer-bottom a {
-	color: var(--white-color);
+	color:#ff3347);
 }
 
 .site-footer-bottom a:hover {
-	color: #FF6;
+	color: #007639;
 }
 
 .site-footer-link {
@@ -1302,7 +1302,7 @@ blockquote::before {
 }
 
 .copyright-text {
-  color: var(--section-bg-color);
+  color: #231f20;
   font-size: var(--copyright-font-size);
   margin-right: 30px;
 }
@@ -1313,6 +1313,7 @@ blockquote::before {
 
 .site-footer .custom-btn:hover {
   background: var(--primary-color);
+  
 }
 
 
