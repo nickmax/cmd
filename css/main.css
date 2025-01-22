@@ -1367,7 +1367,7 @@ blockquote::before {
 .social-icon-link {
   background: var(--site-footer-bg-color);
   border-radius: var(--border-radius-large);
-  color: var(--white-color);
+  color: #007639;
   font-size: var(--copyright-font-size);
   display: block;
   margin-right: 5px;
