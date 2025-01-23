@@ -54,7 +54,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#welcome_section">Home</a>
+                            <a class="nav-link" href="index.html#welcome_section">Home</a>
                         </li>
 
                         <li class="nav-item">
@@ -178,14 +178,23 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-5 col-12 d-flex flex-column flex-md-row justify-content-center align-items-center mx-auto text-center text-md-start">
-                            <p class="copyright-text mb-1 mb-md-0">Copyright © 2025 ElimuX</p>
-                            <p class="copyright-text mb-0">Site Made with ❤️ by <a href="https://mathengeinc.com" target="_blank">MathengeInc.</a>
+                            <p class="copyright-text mb-1 mb-md-0">
+                        Copyright © <span id="currentYear"></span> PDF
+                    </p>
+                            <p class="copyright-text mb-0">
+                        Site Made with ❤️ by 
+                        <a href="https://mathengeinc.com" target="_blank">MathengeInc.</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
+        <script>
+            document
+                .getElementById("currentYear")
+                .textContent = new Date().getFullYear();
+        </script>
 
         <!-- JAVASCRIPT FILES -->
         <script src="js/jquery.min.js"></script>
