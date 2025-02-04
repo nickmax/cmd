@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibition Booth Booking System</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 28px;
+            color: #333;
+            font-weight: 600;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Key for Colors */
+        .key {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .key-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .key-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .key-color.open { background-color: #e0e0e0; }
+        .key-color.selected { background-color: #4caf50; }
+        .key-color.reserved { background-color: #2196f3; }
+        .key-color.declared_interest { background-color: #ff9800; }
+
+        /* Booth Grid */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Booths */
+        .booth {
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+        .booth::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .booth:hover::after {
+            opacity: 1;
+        }
+
+        /* Booth States */
+        .booth.open {
+            background-color: #e0e0e0;
+            border-color: #ccc;
+            color: #333;
+        }
+        .booth.selected {
+            background-color: #4caf50;
+            border-color: #388e3c;
+            color: #fff;
+        }
+        .booth.reserved {
+            background-color: #2196f3;
+            border-color: #1976d2;
+            color: #fff;
+            pointer-events: none;
+        }
+        .booth.declared_interest {
+            background-color: #ff9800;
+            border-color: #f57c00;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        /* Button */
+        #confirmBtn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+        #confirmBtn:hover {
+            background-color: #1976d2;
+            transform: scale(1.05);
+        }
+
+        /* Reset Button */
+        #resetBtn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+        #resetBtn:hover {
+            background-color: #d32f2f;
+            transform: scale(1.05);
+        }
+
+        /* Sweet Message */
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeInOut 3s ease-in-out;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            10%, 90% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Exhibition Booth Booking System</h2>
+    <p>Select a booth and click "Declare Interest" to reserve.</p>
+
+    <!-- Color Key -->
+    <div class="key">
+        <div class="key-item">
+            <div class="key-color open"></div>
+            <span>Open</span>
+        </div>
+        <div class="key-item">
+            <div class="key-color selected"></div>
+            <span>Selected</span>
+        </div>
+        <div class="key-item">
+            <div class="key-color reserved"></div>
+            <span>Reserved</span>
+        </div>
+        <div class="key-item">
+            <div class="key-color declared_interest"></div>
+            <span>Declared Interest</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid" id="boothGrid"></div>
+        <button id="confirmBtn">Declare Interest</button>
+        <button id="resetBtn">Reset Booths</button>
+    </div>
+
+    <script>
+        const boothGrid = document.getElementById("boothGrid");
+        const confirmBtn = document.getElementById("confirmBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        let selectedBooths = [];
+        let boothData = [];
+
+        // Fetch booth data from the JSON file
+        async function fetchBoothData() {
+            const response = await fetch("booths.json");
+            const data = await response.json();
+            return data.booths;
+        }
+
+        // Create booths dynamically based on the fetched data
+        async function createBooths() {
+            boothData = await fetchBoothData();
+            boothGrid.innerHTML = "";
+
+            boothData.forEach((booth) => {
+                const boothElement = document.createElement("div");
+                boothElement.classList.add("booth", booth.status);
+                boothElement.textContent = booth.id;
+
+                // Add click event listener for selecting booths
+                if (booth.status === "open") {
+                    boothElement.addEventListener("click", () => selectBooth(boothElement, booth.id));
+                } else if (booth.status === "reserved") {
+                    boothElement.addEventListener("click", () => showMessage("Oops! This booth is already reserved. Please pick another one."));
+                }
+
+                boothGrid.appendChild(boothElement);
+            });
+        }
+
+        // Select or deselect a booth
+        function selectBooth(booth, id) {
+            if (booth.classList.contains("selected")) {
+                booth.classList.remove("selected");
+                selectedBooths = selectedBooths.filter((b) => b !== id);
+            } else {
+                booth.classList.add("selected");
+                selectedBooths.push(id);
+            }
+        }
+
+        // Show a sweet message
+        function showMessage(message) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.textContent = message;
+            document.body.appendChild(messageElement);
+            setTimeout(() => messageElement.remove(), 3000);
+        }
+
+        // Confirm booking (declare interest)
+        confirmBtn.addEventListener("click", async () => {
+            if (selectedBooths.length === 0) {
+                showMessage("Please select at least one booth.");
+                return;
+            }
+
+            // Update booth status to "declared_interest"
+            boothData = boothData.map((booth) => {
+                if (selectedBooths.includes(booth.id)) {
+                    return { ...booth, status: "declared_interest" };
+                }
+                return booth;
+            });
+
+            // Simulate saving updated booth data (in a real app, send to server)
+            localStorage.setItem("boothData", JSON.stringify(boothData));
+
+            // Open mailto link
+            const subject = "Availability of Selected Booths";
+            const body = `Hello,\n\nI am interested in the following booths: ${selectedBooths.join(", ")}.\n\nPlease let me know if they are available.\n\nRegards,\n[Your Name]`;
+            window.location.href = `mailto:nickmax110@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Clear selected booths and refresh UI
+            selectedBooths = [];
+            createBooths();
+            showMessage("Interest declared successfully!");
+        });
+
+        // Reset booths to initial state
+        resetBtn.addEventListener("click", async () => {
+            localStorage.removeItem("boothData");
+            boothData = await fetchBoothData();
+            createBooths();
+            showMessage("Booths reset successfully!");
+        });
+
+        // Initialize the booths on page load
+        createBooths();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+    "booths": [
+        { "id": 1, "status": "open" },
+        { "id": 2, "status": "reserved" },
+        { "id": 3, "status": "declared_interest" },
+        { "id": 4, "status": "open" },
+        { "id": 5, "status": "open" },
+        { "id": 6, "status": "reserved" },
+        { "id": 7, "status": "open" },
+        { "id": 8, "status": "declared_interest" },
+        { "id": 9, "status": "open" },
+        { "id": 10, "status": "declared_interest" },
+        { "id": 11, "status": "reserved" },
+        { "id": 12, "status": "open" },
+        { "id": 13, "status": "declared_interest" },
+        { "id": 14, "status": "open" },
+        { "id": 15, "status": "open" },
+        { "id": 16, "status": "reserved" },
+        { "id": 17, "status": "open" },
+        { "id": 18, "status": "declared_interest" },
+        { "id": 19, "status": "open" },
+        { "id": 20, "status": "open" },
+        { "id": 21, "status": "reserved" },
+        { "id": 22, "status": "open" },
+        { "id": 23, "status": "declared_interest" },
+        { "id": 24, "status": "open" },
+        { "id": 25, "status": "open" }
+    ]
+}
