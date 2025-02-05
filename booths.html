@@ -90,8 +90,8 @@
             color: #fff;
         }
         .booth.reserved {
-            background-color: #2196f3;
-            border-color: #1976d2;
+            background-color: rgba(35, 36, 37, 0.69);
+            border-color: rgba(35, 36, 37, 0.69);
             color: #fff;
             pointer-events: none;
         }
@@ -175,8 +175,8 @@
         }
         .color-key-box.open { background-color: #e0e0e0; }
         .color-key-box.selected { background-color: #4caf50; }
-        .color-key-box.reserved { background-color: #2196f3; }
-        .color-key-box.declared_interest { background-color: #ff9800; }
+        .color-key-box.reserved { background-color:rgba(35, 36, 37, 0.69); }
+        
     </style>
 </head>
 
@@ -224,7 +224,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-12 mx-auto">
                         <h2 class="text-center mb-4">Booth Booking </h2>
-                        <p class="text-center mb-4">Select a booth and click "Declare Interest" to reserve. After clicking, an email will pop up with your selected booths, and we will get back to you about availability.</p>
+                        <p class="text-center mb-4">Select a booth and click "Inquire" to inquire on the booths availability. After clicking, an email will pop up with your selected booths, and we will get back to you about availability.</p>
 
                         <!-- Color Key -->
                         <div class="color-key mb-4">
@@ -232,18 +232,12 @@
                                 <div class="color-key-box open"></div>
                                 <span>Open</span>
                             </div>
-                            <div class="color-key-item">
-                                <div class="color-key-box selected"></div>
-                                <span>Selected</span>
-                            </div>
+                            
                             <div class="color-key-item">
                                 <div class="color-key-box reserved"></div>
                                 <span>Reserved</span>
                             </div>
-                            <div class="color-key-item">
-                                <div class="color-key-box declared_interest"></div>
-                                <span>Declared Interest</span>
-                            </div>
+                            
                         </div>
 
                         <!-- Booth Layout -->
@@ -251,7 +245,7 @@
 
                         <!-- Buttons -->
                         <div class="text-center mt-4">
-                            <button id="confirmBtn" class="me-2">Declare Interest</button>
+                            <button id="confirmBtn" class="me-2">Inquire</button>
                             <button id="resetBtn">Reset Selected Booths</button>
                         </div>
                     </div>
