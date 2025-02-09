@@ -1,10 +1,10 @@
 {
     "booths": [
-        { "id": 1, "status": "reserved" },
-        { "id": 2, "status": "reserved" },
-        { "id": 3, "status": "reserved" },
-        { "id": 4, "status": "reserved" },
-        { "id": 5, "status": "reserved" },
+        { "id": 1, "status": "open" },
+        { "id": 2, "status": "open" },
+        { "id": 3, "status": "open" },
+        { "id": 4, "status": "open" },
+        { "id": 5, "status": "open" },
         
         { "id": 6, "status": "open" },
         { "id": 7, "status": "open" },
@@ -97,10 +97,12 @@
         { "id": 94, "status": "open" },
         { "id": 95, "status": "open" },
         
-        { "id": 96, "status": "reserved" },
-        { "id": 97, "status": "reserved" },
-        { "id": 98, "status": "reserved" },
-        { "id": 99, "status": "reserved" },
-        { "id": 100, "status": "reserved" }
+        { "id": 96, "status": "open" },
+        { "id": 97, "status": "open" },
+        { "id": 98, "status": "open" },
+        { "id": 99, "status": "open" },
+        { "id": 100, "status": "open" }
     ]
 }
+// "reserved"
+// "open"
