@@ -1952,24 +1952,3 @@ blockquote::before {
 }
 
 
-@media (max-width: 768px) {
-  .custom-text-box {
-      padding: 20px; /* Reduce padding */
-      margin: 0 auto; /* Center the content */
-      word-wrap: break-word; /* Break long words */
-      overflow-wrap: break-word; /* Ensure text does not overflow */
-  }
-
-  .section-padding {
-      padding: 20px 15px; /* Reduce section padding */
-  }
-
-  .tab-pane img {
-      width: 100%; /* Ensure images take full width */
-  }
-
-  .d-flex {
-      flex-wrap: wrap; /* Ensure Flexbox items wrap */
-  }
-
-}
