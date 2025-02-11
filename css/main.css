@@ -1972,11 +1972,4 @@ blockquote::before {
       flex-wrap: wrap; /* Ensure Flexbox items wrap */
   }
 
-  h2 {
-      font-size: 24px; /* Adjust heading size */
-  }
-
-  p {
-      font-size: 14px; /* Adjust paragraph size */
-  }
 }
