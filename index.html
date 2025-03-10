@@ -197,132 +197,109 @@
             </style>
 
             <section>
-                <!DOCTYPE html>
-                <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Countdown Timer</title>
-                        <style>
-                            body {
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Countdown Timer</title>
+            <style>
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background-color: #fff;
+                    color: #000;
+                }
+                .countdown {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    margin: 30px 0;
+                }
+                .time-box {
+                    margin: 0 10px;
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                }
+                .label {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 100;
+                    margin-top: -10px;
+                }
+                #message {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
 
-                                margin: 0;
-                                padding: 0;
-                                background-color: #fff;
-                                color: #000;
-                            }
-                            .countdown {
-                                display: flex;
-                                justify-content: space-evenly;
-                                align-items: center;
-                                margin: 30px 0;
+            <div class="col-lg-12 col-12 text-center mb-4">
+                <h2>PDF 2025</h2>
+                <h5 class="mb-3">5th-8th March, Uhuru Park</h5>
+                <small>Come Tubonge!</small>
+            </div>
 
-                            }
-                            .time-box {
-                                margin: 0 10px;
-                                font-size: 2.5rem;
-                                font-weight: bold;
-                            }
-                            .label {
-                                display: block;
-                                font-size: 1rem;
-                                font-weight: 100;
-                                margin-top: -10px;
-                            }
-                        </style>
-                    </head>
-                    <body>
+            <div class="countdown" id="countdown">
+                <div class="time-box">
+                    <span id="months">00</span>
+                    <span class="label">MONTHS</span>
+                </div>
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <span class="label">DAYS</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <span class="label">HOUR</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <span class="label">MINUTES</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <span class="label">SECONDS</span>
+                </div>
+            </div>
+            <div id="message"></div>
 
-                        <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>PDF 2025</h2>
-                            <h5 class="mb-3">5th-8th March,Uhuru Park</h5>
-                            <small>Come Tubonge!</small>
-                        </div>
+            <script>
+                // Set the target date here (Format: "YYYY-MM-DDTHH:MM:SS")
+                const targetDate = new Date("2025-03-05T00:00:00").getTime();
 
-                        <div class="countdown" id="countdown">
-                            <div class="time-box">
-                                <span id="months">00</span>
-                                <span class="label">MONTHS</span>
-                            </div>
-                            <div class="time-box">
-                                <span id="days">00</span>
-                                <span class="label">DAYS</span>
-                            </div>
-                            <div class="time-box">
-                                <span id="hours">00</span>
-                                <span class="label">HOUR</span>
-                            </div>
-                            <div class="time-box">
-                                <span id="minutes">00</span>
-                                <span class="label">MINUTES</span>
-                            </div>
-                            <div class="time-box">
-                                <span id="seconds">00</span>
-                                <span class="label">SECONDS</span>
-                            </div>
-                        </div>
-                        <div id="message"></div>
+                // Update countdown every second
+                const countdownTimer = setInterval(() => {
+                    const now = new Date().getTime();
+                    const difference = targetDate - now;
 
-                        <script>
-                            // Set the target date here (Format: "YYYY-MM-DDTHH:MM:SS")
-                            const targetDate = new Date("2025-03-05T00:00:00").getTime();
+                    if (difference > 0) {
+                        // Time calculations
+                        const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30));
+                        const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                            // Update countdown every second
-                            const countdownTimer = setInterval(() => {
-                                const now = new Date().getTime();
-                                const difference = targetDate - now;
-
-                                if (difference > 0) {
-                                    // Time calculations
-                                    const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30));
-                                    const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-                                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                                    // Update HTML
-                                    document
-                                        .getElementById("months")
-                                        .innerText = months
-                                        .toString()
-                                        .padStart(2, "0");
-                                    document
-                                        .getElementById("days")
-                                        .innerText = days
-                                        .toString()
-                                        .padStart(2, "0");
-                                    document
-                                        .getElementById("hours")
-                                        .innerText = hours
-                                        .toString()
-                                        .padStart(2, "0");
-                                    document
-                                        .getElementById("minutes")
-                                        .innerText = minutes
-                                        .toString()
-                                        .padStart(2, "0");
-                                    document
-                                        .getElementById("seconds")
-                                        .innerText = seconds
-                                        .toString()
-                                        .padStart(2, "0");
-                                } else {
-                                    // Event has occurred
-                                    clearInterval(countdownTimer);
-                                    document
-                                        .getElementById("countdown")
-                                        .style
-                                        .display = "none";
-                                    document
-                                        .getElementById("message")
-                                        .innerText = "IT HAPPENED ON " + new Date(targetDate).toDateString();
-                                }
-                            }, 1000);
-                        </script>
-                    </body>
-                </html>
-
-            </section>
+                        // Update HTML
+                        document.getElementById("months").innerText = months.toString().padStart(2, "0");
+                        document.getElementById("days").innerText = days.toString().padStart(2, "0");
+                        document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+                        document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+                        document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+                    } else {
+                        // Event has occurred
+                        clearInterval(countdownTimer);
+                        document.getElementById("countdown").style.display = "no";
+                        document.getElementById("message").innerText = "THANK YOU TO ALL WHO CAME!";
+                    }
+                }, 1000);
+            </script>
+        </body>
+    </html>
+</section>
             <section class="section-padding text-center">
                 <div class="container">
                     <div class="row justify-content-center">
